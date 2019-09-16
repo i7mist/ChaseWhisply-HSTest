@@ -8,12 +8,17 @@ import android.view.SurfaceView;
 
 import java.io.IOException;
 
+import me.tianshili.annotationlib.camera.CameraSource;
+
 /**
  * A basic Camera preview class
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
     private static final String TAG = "CameraPreview";
+    @CameraSource(
+            ID = "CameraSource-1",
+            purposes = {"Not specified by developer"})
     private final SurfaceHolder mHolder;
     private Camera mCamera;
 
@@ -30,7 +35,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder) {
+    public void surfaceCreated(@CameraSource(
+            ID = "CameraSource-0",
+            purposes = {"Not specified by developer"})
+                               SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         try {
             mCamera.setPreviewDisplay(holder);

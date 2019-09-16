@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 import fr.tvbarthel.games.chasewhisply.beta.BetaUtils;
 import fr.tvbarthel.games.chasewhisply.ui.CameraPreview;
+import me.tianshili.annotationlib.sensors.SensorSource;
 
 public abstract class ARActivity extends Activity implements SensorEventListener {
 
@@ -114,7 +115,10 @@ public abstract class ARActivity extends Activity implements SensorEventListener
     }
 
     @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
+    public void onSensorChanged(@SensorSource(
+            ID = "SensorSource-0",
+            purposes = {"Not specified by developer"})
+                                SensorEvent sensorEvent) {
         final int sensorType = sensorEvent.sensor.getType();
         float[] rotationVector = null;
 
